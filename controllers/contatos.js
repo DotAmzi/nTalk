@@ -3,7 +3,11 @@ module.exports = function(app){
     index: function(req, res){
       var usuario = req.ntalk.usuario
         , params = {usuario: usuario};
-      res.render('contatos/index', params);
+      if(usuario){
+        res.render('contatos/index', params);
+      }else{
+        res.redirect('/');
+      }
     },
   };
   return ContatosController;
