@@ -8,15 +8,17 @@ module.exports = function(app){
       , nome = req.body.usuario.nome
       ;
       if(email && nome){
-        var usuario = req.body.usuario = usuario;
+        var usuario = req.body.usuario;
         usuario['contatos'] = [];
-        req.session.usuario = usuario;
+        req.ntalk.usuario = usuario;
+        res.redirect('/contatos');
+      }else{
         res.redirect('/');
       }
     },
     logout: function(req, res){
-      req.session.destroy();
-      req.redirect('/');
+      req.ntalk.reset();
+      res.redirect('/');
     }
   };
   return homeController;
