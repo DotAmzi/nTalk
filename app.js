@@ -8,6 +8,7 @@ var express = require('express')
   , bodyParser = require('body-parser')
   , cookieParser = require('cookie-parser')
   , sessions = require("client-sessions")
+  , methodOverride = require("method-override")
   , app = express()
 ;
 
@@ -20,8 +21,10 @@ app.use(sessions({
   secret: 'xablau', // should be a large unguessable string
 }));
 
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride());
 app.use(express.static(__dirname + '/public'));
 
 /*
