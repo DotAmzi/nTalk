@@ -1,4 +1,4 @@
-module.exports = function(app){
+ lomodule.exports = function(app){
   var ContatosController = {
     index: function(req, res){
       var usuario = req.ntalk.usuario
