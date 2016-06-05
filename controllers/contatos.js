@@ -1,15 +1,12 @@
  module.exports = function(app){
+   
   var ContatosController = {
     index: function(req, res){
       var usuario = req.ntalk.usuario
         , contatos = usuario.contatos
         , params = {usuario: usuario
         , contatos: contatos};
-      if(usuario){
         res.render('contatos/index', params);
-      }else{
-        res.redirect('/');
-      }
     },
 
     create: function(req, res){
