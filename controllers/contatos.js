@@ -1,10 +1,10 @@
- lomodule.exports = function(app){
+ module.exports = function(app){
   var ContatosController = {
     index: function(req, res){
       var usuario = req.ntalk.usuario
-        , contato = usuario.contatos
+        , contatos = usuario.contatos
         , params = {usuario: usuario
-                  , contatos: contatos};
+        , contatos: contatos};
       if(usuario){
         res.render('contatos/index', params);
       }else{
@@ -32,7 +32,7 @@
         , contato = usuario.contatos[id]
         , params = {
           usuario: usuario
-          , contato: contato,
+          , contato: contato
           , id: id
         };
         res . render ( 'contatos/edit' , params );
