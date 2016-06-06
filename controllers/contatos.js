@@ -6,7 +6,6 @@
         , contatos = usuario.contatos
         , params = {usuario: usuario
         , contatos: contatos};
-        console.log(params);
         res.render('contatos/index', params);
     },
 
@@ -21,7 +20,6 @@
       var id = req.params.id
         , contato = req.ntalk.usuario.contatos[id]
         , params = {contato: contato, id: id};
-        console.log(contato);
         res.render('contatos/show', params);
     },
 
@@ -41,7 +39,8 @@
       var contato = req.body.contato
         , usuario = req.ntalk.usuario;
       usuario.contatos[req.params.id] = contato;
-      red.redirect('/contatos');
+      console.log(contato);
+      res.redirect('/contatos');
     },
 
     destroy: function(req, res){

@@ -24,7 +24,8 @@ app.use(sessions({
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(methodOverride());
+// Na assinatura do methodOverride, basta colocar uma pré assinatura para os métodos
+app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));
 
 /*
