@@ -11,6 +11,8 @@ var express = require('express')
   , methodOverride = require("method-override")
   , error = require('./middleware/error')
   , app = express()
+  , server = require('http').Server(app)
+  , io = require('socket.io')(server)
 ;
 
 app.set('views', __dirname +'/views');
@@ -35,11 +37,19 @@ app.use('/usuarios', users);
   Não é necessário setar rotas com o express-load
 */
 
+
 load('models')
   .then('controllers')
   .then('routes')
   .into(app);
-
+  
+io.sockets.on('connection', function(client){
+  cllient.on('send-server', function(data){
+    var msg = "<b>"+ data.nome +":</b>"+ data.msg +"<br>";
+    cient.emit('send-client', msg);
+    client.broadcast.emit('send-client', msg);
+  })
+})
   /*
   Os middleware de erros só podem ser instanciados depois
   das rotas e controllers
