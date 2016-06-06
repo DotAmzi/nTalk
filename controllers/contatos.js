@@ -1,25 +1,27 @@
  module.exports = function(app){
-   
+
   var ContatosController = {
     index: function(req, res){
       var usuario = req.ntalk.usuario
         , contatos = usuario.contatos
         , params = {usuario: usuario
         , contatos: contatos};
+        console.log(params);
         res.render('contatos/index', params);
     },
 
     create: function(req, res){
-      var contato = usuario.contatos
+      var contato = req.body.contato
         , usuario = req.ntalk.usuario;
         usuario.contatos.push(contato);
-        red.redirect('/contatos');
+        res.redirect('/contatos');
     },
 
     show: function(req, res){
       var id = req.params.id
         , contato = req.ntalk.usuario.contatos[id]
         , params = {contato: contato, id: id};
+        console.log(contato);
         res.render('contatos/show', params);
     },
 
@@ -32,7 +34,7 @@
           , contato: contato
           , id: id
         };
-        res . render ( 'contatos/edit' , params );
+        res.render ( 'contatos/edit' , params );
     },
 
     update: function(req, res){
