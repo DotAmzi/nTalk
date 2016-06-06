@@ -9,6 +9,7 @@ var express = require('express')
   , cookieParser = require('cookie-parser')
   , sessions = require("client-sessions")
   , methodOverride = require("method-override")
+  , error = require('./middleware/error')
   , app = express()
 ;
 
@@ -38,6 +39,14 @@ load('models')
   .then('controllers')
   .then('routes')
   .into(app);
+
+  /*
+  Os middleware de erros só podem ser instanciados depois
+  das rotas e controllers
+  */
+
+app.use(error.notFound);
+app.use(error.serverError);
 
 app.listen(3000, function(){
   console.log('Ntalk no ar');

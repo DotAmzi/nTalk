@@ -39,7 +39,6 @@
       var contato = req.body.contato
         , usuario = req.ntalk.usuario;
       usuario.contatos[req.params.id] = contato;
-      console.log(contato);
       res.redirect('/contatos');
     },
 
