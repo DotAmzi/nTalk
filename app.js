@@ -11,7 +11,7 @@ var express = require('express')
   , methodOverride = require("method-override")
   , error = require('./middleware/error')
   , app = express()
-  , server = require('http').Server(app)
+  , server = require('http').createServer(app)
   , io = require('socket.io')(server)
 ;
 
@@ -42,11 +42,11 @@ load('models')
   .then('controllers')
   .then('routes')
   .into(app);
-  
-io.sockets.on('connection', function(client){
-  cllient.on('send-server', function(data){
+
+io.on('connection', function(client){
+  client.on('send-server', function(data){
     var msg = "<b>"+ data.nome +":</b>"+ data.msg +"<br>";
-    cient.emit('send-client', msg);
+    client.emit('send-client', msg);
     client.broadcast.emit('send-client', msg);
   })
 })
@@ -58,6 +58,6 @@ io.sockets.on('connection', function(client){
 app.use(error.notFound);
 app.use(error.serverError);
 
-app.listen(3000, function(){
+server.listen(3000, function(){
   console.log('Ntalk no ar');
 })
