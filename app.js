@@ -43,13 +43,9 @@ load('models')
   .then('routes')
   .into(app);
 
-io.on('connection', function(client){
-  client.on('send-server', function(data){
-    var msg = "<b>"+ data.nome +":</b>"+ data.msg +"<br>";
-    client.emit('send-client', msg);
-    client.broadcast.emit('send-client', msg);
-  })
-})
+load('sockets')
+  .into(io);
+
   /*
   Os middleware de erros só podem ser instanciados depois
   das rotas e controllers
