@@ -18,7 +18,9 @@ ou
 `https://github.com/camilofernandesalves/nTalk.git`
 
 2.Logo em seguida abra a pasta e execute
+
 `npm install`
 
 3.Após isso só executar o servidor
+
 `node app.js`
