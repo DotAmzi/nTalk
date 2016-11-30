@@ -14,7 +14,9 @@
 1.Em seu terminal de preferência execute o código abaixo
 
 `git@github.com:camilofernandesalves/nTalk.git`
+
 ou
+
 `https://github.com/camilofernandesalves/nTalk.git`
 
 2.Logo em seguida abra a pasta e execute
